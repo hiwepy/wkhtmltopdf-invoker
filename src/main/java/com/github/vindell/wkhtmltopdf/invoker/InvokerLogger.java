@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.github.vindell.wkhtmltox4j;
+package com.github.vindell.wkhtmltopdf.invoker;
 
 /**
  * A logger used by {@link Invoker} instances to output diagnostic messages.

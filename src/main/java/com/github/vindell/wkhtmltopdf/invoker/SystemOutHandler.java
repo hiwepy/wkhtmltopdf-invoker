@@ -13,13 +13,28 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.github.vindell.wkhtmltox4j;
-
-import org.codehaus.plexus.util.cli.StreamConsumer;
+package com.github.vindell.wkhtmltopdf.invoker;
 
 /**
- * Receives the standard/error output from a Calibre invocation.
+ * Offers an output handler that writes to {@link System#out}.
  */
-public interface InvocationOutputHandler extends StreamConsumer {
-	// empty by design
+public class SystemOutHandler extends PrintStreamHandler {
+
+	/**
+	 * Creates a new output handler.
+	 */
+	public SystemOutHandler() {
+		this(false);
+	}
+
+	/**
+	 * Creates a new output handler.
+	 * 
+	 * @param alwaysFlush
+	 *            A flag whether the print stream should be flushed after each line.
+	 */
+	public SystemOutHandler(boolean alwaysFlush) {
+		super(System.out, alwaysFlush);
+	}
+
 }

@@ -13,20 +13,25 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.github.vindell.wkhtmltox4j;
+package com.github.vindell.wkhtmltopdf.invoker;
 
 import java.io.File;
-import java.io.InputStream;
 
 import org.codehaus.plexus.util.cli.CommandLineException;
 import org.codehaus.plexus.util.cli.CommandLineUtils;
 import org.codehaus.plexus.util.cli.Commandline;
 
-import com.github.vindell.wkhtmltox4j.exception.CommandLineConfigurationException;
-import com.github.vindell.wkhtmltox4j.exception.MavenInvocationException;
+import com.github.vindell.wkhtmltopdf.invoker.command.AbstractCommandLineBuilder;
+import com.github.vindell.wkhtmltopdf.invoker.command.WkhtmlToPdfCommandLineBuilder;
+import com.github.vindell.wkhtmltopdf.invoker.command.WkhtmlToImageCommandLineBuilder;
+import com.github.vindell.wkhtmltopdf.invoker.exception.CommandLineConfigurationException;
+import com.github.vindell.wkhtmltopdf.invoker.exception.WkhtmlToPdfInvocationException;
+import com.github.vindell.wkhtmltopdf.invoker.request.InvocationRequest;
+import com.github.vindell.wkhtmltopdf.invoker.request.WkhtmlToImageInvocationRequest;
+import com.github.vindell.wkhtmltopdf.invoker.request.WkhtmlToPdfInvocationRequest;
 
 /**
- * Class intended to be used by clients who wish to invoke a forked Calibre
+ * Class intended to be used by clients who wish to invoke a forked wkhtmltopdf
  * process from their applications
  */
 public class DefaultInvoker implements Invoker {
@@ -37,45 +42,40 @@ public class DefaultInvoker implements Invoker {
 
 	private static final InvocationOutputHandler DEFAULT_OUTPUT_HANDLER = new SystemOutHandler();
 
-	private File localRepositoryDirectory;
-
 	private InvokerLogger logger = DEFAULT_LOGGER;
 
 	private File workingDirectory;
-
-	private File mavenHome;
-
-	private File mavenExecutable;
+	
+	private File wkhtmltopdfHome;
 
 	private InvocationOutputHandler outputHandler = DEFAULT_OUTPUT_HANDLER;
 
-	private InputStream inputStream;
-
 	private InvocationOutputHandler errorHandler = DEFAULT_OUTPUT_HANDLER;
-
-	public InvocationResult execute(InvocationRequest request) throws MavenInvocationException {
-		CommandLineBuilder cliBuilder = new CommandLineBuilder();
+	
+	protected AbstractCommandLineBuilder getCommandLineBuilder(InvocationRequest request) {
+		if(request instanceof WkhtmlToPdfInvocationRequest) {
+			return new WkhtmlToPdfCommandLineBuilder();
+		}
+		if(request instanceof WkhtmlToImageInvocationRequest) {
+			return new WkhtmlToImageCommandLineBuilder();
+		}
+		return null;
+	}
+	
+	public InvocationResult execute(InvocationRequest request) throws WkhtmlToPdfInvocationException {
+		
+		AbstractCommandLineBuilder cliBuilder = getCommandLineBuilder(request);
 
 		InvokerLogger logger = getLogger();
 		if (logger != null) {
 			cliBuilder.setLogger(getLogger());
 		}
-
-		File localRepo = getLocalRepositoryDirectory();
-		if (localRepo != null) {
-			cliBuilder.setLocalRepositoryDirectory(getLocalRepositoryDirectory());
+ 
+		File wkhtmltopdfHome = getWkhtmltopdfHome();
+		if (wkhtmltopdfHome != null) {
+			cliBuilder.setCalibreHome(getWkhtmltopdfHome());
 		}
-
-		File mavenHome = getMavenHome();
-		if (mavenHome != null) {
-			cliBuilder.setMavenHome(getMavenHome());
-		}
-
-		File mavenExecutable = getMavenExecutable();
-		if (mavenExecutable != null) {
-			cliBuilder.setMavenExecutable(mavenExecutable);
-		}
-
+		
 		File workingDirectory = getWorkingDirectory();
 		if (workingDirectory != null) {
 			cliBuilder.setWorkingDirectory(getWorkingDirectory());
@@ -85,12 +85,13 @@ public class DefaultInvoker implements Invoker {
 		try {
 			cli = cliBuilder.build(request);
 		} catch (CommandLineConfigurationException e) {
-			throw new MavenInvocationException("Error configuring command-line. Reason: " + e.getMessage(), e);
+			throw new WkhtmlToPdfInvocationException("Error configuring command-line. Reason: " + e.getMessage(), e);
 		}
 
 		DefaultInvocationResult result = new DefaultInvocationResult();
 
 		try {
+			
 			int exitCode = executeCommandLine(cli, request);
 
 			result.setExitCode(exitCode);
@@ -104,52 +105,25 @@ public class DefaultInvoker implements Invoker {
 	private int executeCommandLine(Commandline cli, InvocationRequest request) throws CommandLineException {
 		int result = Integer.MIN_VALUE;
 
-		InputStream inputStream = request.getInputStream(this.inputStream);
 		InvocationOutputHandler outputHandler = request.getOutputHandler(this.outputHandler);
 		InvocationOutputHandler errorHandler = request.getErrorHandler(this.errorHandler);
 
 		if (getLogger().isDebugEnabled()) {
 			getLogger().debug("Executing: " + cli);
 		}
-
-		if (request.isBatchMode()) {
-			if (inputStream != null) {
-				getLogger().info("Executing in batch mode. The configured input stream will be ignored.");
-			}
-
-			result = CommandLineUtils.executeCommandLine(cli, outputHandler, errorHandler);
-		} else {
-			if (inputStream == null) {
-				getLogger().warn("Maven will be executed in interactive mode"
-						+ ", but no input stream has been configured for this MavenInvoker instance.");
-
-				result = CommandLineUtils.executeCommandLine(cli, outputHandler, errorHandler);
-			} else {
-				result = CommandLineUtils.executeCommandLine(cli, inputStream, outputHandler, errorHandler);
-			}
-		}
-
+		result = CommandLineUtils.executeCommandLine(cli, outputHandler, errorHandler);
 		return result;
-	}
-
-	public File getLocalRepositoryDirectory() {
-		return localRepositoryDirectory;
 	}
 
 	public InvokerLogger getLogger() {
 		return logger;
 	}
 
-	public Invoker setLocalRepositoryDirectory(File localRepositoryDirectory) {
-		this.localRepositoryDirectory = localRepositoryDirectory;
-		return this;
-	}
-
 	public Invoker setLogger(InvokerLogger logger) {
 		this.logger = (logger != null) ? logger : DEFAULT_LOGGER;
 		return this;
 	}
-
+	
 	public File getWorkingDirectory() {
 		return workingDirectory;
 	}
@@ -159,22 +133,12 @@ public class DefaultInvoker implements Invoker {
 		return this;
 	}
 
-	public File getMavenHome() {
-		return mavenHome;
+	public File getWkhtmltopdfHome() {
+		return wkhtmltopdfHome;
 	}
 
-	public Invoker setMavenHome(File mavenHome) {
-		this.mavenHome = mavenHome;
-
-		return this;
-	}
-
-	public File getMavenExecutable() {
-		return mavenExecutable;
-	}
-
-	public Invoker setMavenExecutable(File mavenExecutable) {
-		this.mavenExecutable = mavenExecutable;
+	public Invoker setWkhtmltopdfHome(File wkhtmltopdfHome) {
+		this.wkhtmltopdfHome = wkhtmltopdfHome;
 		return this;
 	}
 
@@ -183,14 +147,9 @@ public class DefaultInvoker implements Invoker {
 		return this;
 	}
 
-	public Invoker setInputStream(InputStream inputStream) {
-		this.inputStream = inputStream;
-		return this;
-	}
-
 	public Invoker setOutputHandler(InvocationOutputHandler outputHandler) {
 		this.outputHandler = outputHandler;
 		return this;
 	}
-
+	
 }

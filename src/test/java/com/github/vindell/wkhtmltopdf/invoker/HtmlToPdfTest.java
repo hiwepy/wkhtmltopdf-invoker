@@ -1,4 +1,4 @@
-package com.github.vindell.wkhtmltox4j;
+package com.github.vindell.wkhtmltopdf.invoker;
 
 /**
  * 测试

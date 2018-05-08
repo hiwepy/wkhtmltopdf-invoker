@@ -13,13 +13,19 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.github.vindell.wkhtmltox4j.exception;
+package com.github.vindell.wkhtmltopdf.invoker.exception;
+
+import com.github.vindell.wkhtmltopdf.invoker.InvocationResult;
 
 /**
  * Signals an error during the construction of the command line used to invoke
- * Maven.
+ * wkhtmltopdf, e.g. illegal invocation arguments. This should not be confused
+ * with a failure of the invoked wkhtmltopdf build itself which will be reported
+ * by means of a non-zero exit code.
+ * 
+ * @see InvocationResult#getExitCode()
  */
-public class CommandLineConfigurationException extends Exception {
+public class WkhtmlToPdfInvocationException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
@@ -31,7 +37,7 @@ public class CommandLineConfigurationException extends Exception {
 	 * @param cause
 	 *            The nested exception, may be <code>null</code>.
 	 */
-	public CommandLineConfigurationException(String message, Throwable cause) {
+	public WkhtmlToPdfInvocationException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
@@ -41,7 +47,7 @@ public class CommandLineConfigurationException extends Exception {
 	 * @param message
 	 *            The detail message for this exception, may be <code>null</code>.
 	 */
-	public CommandLineConfigurationException(String message) {
+	public WkhtmlToPdfInvocationException(String message) {
 		super(message);
 	}
 
