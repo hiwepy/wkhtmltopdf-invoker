@@ -1,7 +1,7 @@
-package com.ztomic.wkhtmltopdf.argument;
+package com.ztomic.Calibre.argument;
 
 /**
- * Options generated for wkhtmltopdf 0.12.3 (with patched qt) from manpage
+ * Options generated for Calibre 0.12.3 (with patched qt) from manpage
  */
 public interface Option {
 

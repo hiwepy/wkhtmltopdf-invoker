@@ -1,4 +1,4 @@
-package com.github.jhonnymertz.wkhtmltopdf.wrapper.params;
+package com.github.jhonnymertz.Calibre.wrapper.params;
 
 import java.util.ArrayList;
 import java.util.List;

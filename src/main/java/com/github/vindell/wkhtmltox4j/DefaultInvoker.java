@@ -26,7 +26,7 @@ import com.github.vindell.wkhtmltox4j.exception.CommandLineConfigurationExceptio
 import com.github.vindell.wkhtmltox4j.exception.MavenInvocationException;
 
 /**
- * Class intended to be used by clients who wish to invoke a forked wkhtmltopdf
+ * Class intended to be used by clients who wish to invoke a forked Calibre
  * process from their applications
  */
 public class DefaultInvoker implements Invoker {

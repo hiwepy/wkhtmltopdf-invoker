@@ -1,4 +1,4 @@
-package com.github.jhonnymertz.wkhtmltopdf.wrapper.configurations;
+package com.github.jhonnymertz.Calibre.wrapper.configurations;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -8,35 +8,35 @@ public class WrapperConfig {
 
     private XvfbConfig xvfbConfig;
 
-    private String wkhtmltopdfCommand = "wkhtmltopdf";
+    private String CalibreCommand = "Calibre";
 
     public WrapperConfig() {
-      setWkhtmltopdfCommand(findExecutable());
+      setCalibreCommand(findExecutable());
     }
 
-    public WrapperConfig(String wkhtmltopdfCommand) {
-        setWkhtmltopdfCommand(wkhtmltopdfCommand);
+    public WrapperConfig(String CalibreCommand) {
+        setCalibreCommand(CalibreCommand);
     }
 
-    public String getWkhtmltopdfCommand() {
-        return wkhtmltopdfCommand;
+    public String getCalibreCommand() {
+        return CalibreCommand;
     }
 
-    public void setWkhtmltopdfCommand(String wkhtmltopdfCommand) {
-        this.wkhtmltopdfCommand = wkhtmltopdfCommand;
+    public void setCalibreCommand(String CalibreCommand) {
+        this.CalibreCommand = CalibreCommand;
     }
 
     /**
-     * Attempts to find the `wkhtmltopdf` executable in the system path.
+     * Attempts to find the `Calibre` executable in the system path.
      *
-     * @return the wkhtmltopdf command according to the OS
+     * @return the Calibre command according to the OS
      */
     public String findExecutable() {
         try {
         	
             String osname = System.getProperty("os.name").toLowerCase();
 
-            String cmd = osname.contains("windows") ? "where wkhtmltopdf" : "which wkhtmltopdf";
+            String cmd = osname.contains("windows") ? "where Calibre" : "which Calibre";
 
             Process p = Runtime.getRuntime().exec(cmd);
             p.waitFor();
@@ -46,7 +46,7 @@ public class WrapperConfig {
             if (text.isEmpty())
                 throw new RuntimeException();
 
-            setWkhtmltopdfCommand(text);
+            setCalibreCommand(text);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -54,7 +54,7 @@ public class WrapperConfig {
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
-        return getWkhtmltopdfCommand();
+        return getCalibreCommand();
     }
 
     public boolean isXvfbEnabled() {

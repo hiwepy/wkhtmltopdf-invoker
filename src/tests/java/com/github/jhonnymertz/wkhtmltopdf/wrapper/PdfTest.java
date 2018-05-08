@@ -1,7 +1,7 @@
-package com.github.jhonnymertz.wkhtmltopdf.wrapper;
+package com.github.jhonnymertz.Calibre.wrapper;
 
-import com.github.jhonnymertz.wkhtmltopdf.wrapper.configurations.WrapperConfig;
-import com.github.jhonnymertz.wkhtmltopdf.wrapper.params.Param;
+import com.github.jhonnymertz.Calibre.wrapper.configurations.WrapperConfig;
+import com.github.jhonnymertz.Calibre.wrapper.params.Param;
 import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
@@ -27,7 +27,7 @@ public class PdfTest {
     @Test
     public void findExecutable() throws Exception {
         WrapperConfig wc = new WrapperConfig();
-        Assert.assertThat("executable should be /usr/bin/wkhtmltopdf", wc.findExecutable(), containsString("/usr/bin/wkhtmltopdf"));
+        Assert.assertThat("executable should be /usr/bin/Calibre", wc.findExecutable(), containsString("/usr/bin/Calibre"));
     }
 
     @Test

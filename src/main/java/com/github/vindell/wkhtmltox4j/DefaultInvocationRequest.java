@@ -24,11 +24,11 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * Specifies the parameters used to control a wkhtmltopdf invocation.
+ * Specifies the parameters used to control a Calibre invocation.
  */
 public class DefaultInvocationRequest implements InvocationRequest {
 
-	public static final String DEFAULT_EXECUTABLE = "wkhtmltopdf";
+	public static final String DEFAULT_EXECUTABLE = "Calibre";
 	
 	private File basedir;
 

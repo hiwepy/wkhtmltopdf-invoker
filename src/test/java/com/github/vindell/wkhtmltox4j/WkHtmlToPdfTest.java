@@ -12,17 +12,17 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.github.vindell.wkhtmltox4j.source.Source;
-import com.ztomic.wkhtmltopdf.WkHtmlToPdf;
-import com.ztomic.wkhtmltopdf.argument.Argument;
-import com.ztomic.wkhtmltopdf.argument.Option;
+import com.ztomic.Calibre.Calibre;
+import com.ztomic.Calibre.argument.Argument;
+import com.ztomic.Calibre.argument.Option;
 
-public class WkHtmlToPdfTest {
+public class CalibreTest {
 	
 	static final String TEST_STRING = "QWERTZUIOPŠĐASDFGHJKLČĆŽYXCVBNM\nqwertzuiopšđasdfghjklčćžyxcvbnm\n€ÀÁÂÃÄÅÈÉÊËÌÍÎÏÑÒÓÔÕÖØÙÚÛÜÝß\nàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ";
 
 	@Test
 	public void testCommand() throws Exception {
-		WkHtmlToPdf pdf = new WkHtmlToPdf();
+		Calibre pdf = new Calibre();
 		pdf.addToc();
 		pdf.addArguments(
 			Argument.from(Option.PageOption.EnableJavascript),
@@ -34,7 +34,7 @@ public class WkHtmlToPdfTest {
 
 	@Test
 	public void testPdfFromStringToString() throws Exception {
-		WkHtmlToPdf pdf = new WkHtmlToPdf();
+		Calibre pdf = new Calibre();
 		pdf.addArguments(Option.PageOption.EnableJavascript);
 		pdf.addSources(Source.from("<html><head><meta charset=\"utf-8\"></head><h1>" + TEST_STRING + "</h1></html>", "UTF-8"));
 
@@ -48,7 +48,7 @@ public class WkHtmlToPdfTest {
 	
 	@Test
 	public void testPdfFromStringToFile() throws Exception {
-		WkHtmlToPdf pdf = new WkHtmlToPdf();
+		Calibre pdf = new Calibre();
 		pdf.addArguments(Option.PageOption.EnableJavascript);
 		pdf.addSources(Source.from("<html><head><meta charset=\"utf-8\"></head><h1>" + TEST_STRING + "</h1></html>", "UTF-8"));
 		

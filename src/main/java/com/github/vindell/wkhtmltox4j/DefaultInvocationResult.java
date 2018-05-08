@@ -19,7 +19,7 @@ package com.github.vindell.wkhtmltox4j;
 import org.codehaus.plexus.util.cli.CommandLineException;
 
 /**
- * Describes the result of a wkhtmltopdf invocation.
+ * Describes the result of a Calibre invocation.
  * 
  * @version $Id: DefaultInvocationResult.java 1401842 2012-10-24 19:49:47Z rfscholte $
  */
@@ -28,13 +28,13 @@ public final class DefaultInvocationResult
 {
 
     /**
-     * The exception that prevented to execute the command line, will be <code>null</code> if wkhtmltopdf could be
+     * The exception that prevented to execute the command line, will be <code>null</code> if Calibre could be
      * successfully started.
      */
     private CommandLineException executionException;
 
     /**
-     * The exit code reported by the wkhtmltopdf invocation.
+     * The exit code reported by the Calibre invocation.
      */
     private int exitCode = Integer.MIN_VALUE;
 
@@ -57,9 +57,9 @@ public final class DefaultInvocationResult
     }
 
     /**
-     * Sets the exit code reported by the wkhtmltopdf invocation.
+     * Sets the exit code reported by the Calibre invocation.
      * 
-     * @param exitCode The exit code reported by the wkhtmltopdf invocation.
+     * @param exitCode The exit code reported by the Calibre invocation.
      */
     void setExitCode( int exitCode )
     {

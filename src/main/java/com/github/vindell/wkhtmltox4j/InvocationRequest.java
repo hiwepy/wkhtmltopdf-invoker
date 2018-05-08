@@ -23,30 +23,30 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * Specifies the parameters used to control a wkhtmltopdf invocation.
+ * Specifies the parameters used to control a Calibre invocation.
  */
 public interface InvocationRequest
 {
 
     /**
-     * By default, wkhtmltopdf is executed in batch mode. This mean no interaction with the wkhtmltopdf process can be done.
+     * By default, Calibre is executed in batch mode. This mean no interaction with the Calibre process can be done.
      * 
-     * @return <code>true</code> if wkhtmltopdf should be executed in batch mode, <code>false</code> if wkhtmltopdf is executed in
+     * @return <code>true</code> if Calibre should be executed in batch mode, <code>false</code> if Calibre is executed in
      *         interactive mode.
      * @since 3.0.0
      */
     boolean isBatchMode();
 
     /**
-     * Gets the network mode of the wkhtmltopdf invocation. By default, wkhtmltopdf is executed in online mode.
+     * Gets the network mode of the Calibre invocation. By default, Calibre is executed in online mode.
      * 
-     * @return <code>true</code> if wkhtmltopdf should be executed in offline mode, <code>false</code> if the online mode is
+     * @return <code>true</code> if Calibre should be executed in offline mode, <code>false</code> if the online mode is
      *         used.
      */
     boolean isOffline();
 
     /**
-     * Indicates whether wkhtmltopdf should enforce an update check for plugins and snapshots. By default, no update check is
+     * Indicates whether Calibre should enforce an update check for plugins and snapshots. By default, no update check is
      * performed.
      * 
      * @return <code>true</code> if plugins and snapshots should be updated, <code>false</code> otherwise.
@@ -54,7 +54,7 @@ public interface InvocationRequest
     boolean isUpdateSnapshots();
 
     /**
-     * Gets the recursion behavior of a reactor invocation. By default, wkhtmltopdf will recursive the build into sub modules.
+     * Gets the recursion behavior of a reactor invocation. By default, Calibre will recursive the build into sub modules.
      * 
      * @return <code>true</code> if sub modules should be build, <code>false</code> otherwise.
      */
@@ -94,38 +94,38 @@ public interface InvocationRequest
     String getResumeFrom();
 
     /**
-     * Gets the debug mode of the wkhtmltopdf invocation. By default, wkhtmltopdf is executed in normal mode.
+     * Gets the debug mode of the Calibre invocation. By default, Calibre is executed in normal mode.
      * 
-     * @return <code>true</code> if wkhtmltopdf should be executed in debug mode, <code>false</code> if the normal mode should
+     * @return <code>true</code> if Calibre should be executed in debug mode, <code>false</code> if the normal mode should
      *         be used.
      */
     boolean isDebug();
 
     /**
-     * Gets the exception output mode of the wkhtmltopdf invocation. By default, wkhtmltopdf will not print stack traces of build
+     * Gets the exception output mode of the Calibre invocation. By default, Calibre will not print stack traces of build
      * exceptions.
      * 
-     * @return <code>true</code> if wkhtmltopdf should print stack traces, <code>false</code> otherwise.
+     * @return <code>true</code> if Calibre should print stack traces, <code>false</code> otherwise.
      */
     boolean isShowErrors();
 
     /**
-     * Indicates whether the environment variables of the current process should be propagated to the wkhtmltopdf invocation.
-     * By default, the current environment variables are inherited by the new wkhtmltopdf invocation.
+     * Indicates whether the environment variables of the current process should be propagated to the Calibre invocation.
+     * By default, the current environment variables are inherited by the new Calibre invocation.
      * 
      * @return <code>true</code> if the environment variables should be propagated, <code>false</code> otherwise.
      */
     boolean isShellEnvironmentInherited();
 
     /**
-     * Indicates whether wkhtmltopdf should check for plugin updates. By default, plugin updates are not suppressed.
+     * Indicates whether Calibre should check for plugin updates. By default, plugin updates are not suppressed.
      * 
      * @return <code>true</code> if plugin updates should be suppressed, <code>false</code> otherwise.
      */
     boolean isNonPluginUpdates();
 
     /**
-     * Gets the failure mode of the wkhtmltopdf invocation. By default, the mode {@link ReactorFailureBehavior#FailFast} is
+     * Gets the failure mode of the Calibre invocation. By default, the mode {@link ReactorFailureBehavior#FailFast} is
      * used.
      * 
      * @return The failure mode, one of {@link ReactorFailureBehavior#FailFast},
@@ -135,7 +135,7 @@ public interface InvocationRequest
     ReactorFailureBehavior getReactorFailureBehavior();
 
     /**
-     * Gets the path to the base directory of the local repository to use for the wkhtmltopdf invocation.
+     * Gets the path to the base directory of the local repository to use for the Calibre invocation.
      * 
      * @param defaultDirectory The default location to use if no location is configured for this request, may be
      *            <code>null</code>.
@@ -145,55 +145,55 @@ public interface InvocationRequest
     File getLocalRepositoryDirectory( File defaultDirectory );
 
     /**
-     * Gets the input stream used to provide input for the invoked wkhtmltopdf build. This is in particular useful when
-     * invoking wkhtmltopdf in interactive mode.
+     * Gets the input stream used to provide input for the invoked Calibre build. This is in particular useful when
+     * invoking Calibre in interactive mode.
      * 
-     * @return The input stream used to provide input for the invoked wkhtmltopdf build or <code>null</code> if not set.
+     * @return The input stream used to provide input for the invoked Calibre build or <code>null</code> if not set.
      */
     InputStream getInputStream( InputStream defaultStream );
 
     /**
-     * Gets the handler used to capture the standard output from the wkhtmltopdf build.
+     * Gets the handler used to capture the standard output from the Calibre build.
      * 
      * @return The output handler or <code>null</code> if not set.
      */
     InvocationOutputHandler getOutputHandler( InvocationOutputHandler defaultHandler );
 
     /**
-     * Gets the handler used to capture the error output from the wkhtmltopdf build.
+     * Gets the handler used to capture the error output from the Calibre build.
      * 
      * @return The error handler or <code>null</code> if not set.
      */
     InvocationOutputHandler getErrorHandler( InvocationOutputHandler defaultHandler );
 
     /**
-     * Gets the path to the POM for the wkhtmltopdf invocation. If no base directory is set, the parent directory of this POM
-     * will be used as the working directory for the wkhtmltopdf invocation.
+     * Gets the path to the POM for the Calibre invocation. If no base directory is set, the parent directory of this POM
+     * will be used as the working directory for the Calibre invocation.
      * 
-     * @return The path to the POM for the wkhtmltopdf invocation or <code>null</code> if not set.
+     * @return The path to the POM for the Calibre invocation or <code>null</code> if not set.
      */
     File getPomFile();
 
     /**
-     * Gets the (unqualified) filename of the POM for the wkhtmltopdf invocation. This setting is ignored if
+     * Gets the (unqualified) filename of the POM for the Calibre invocation. This setting is ignored if
      * {@link #getPomFile()} does not return <code>null</code>. Otherwise, the base directory is assumed to contain a
      * POM with this name. By default, a file named <code>pom.xml</code> is used.
      * 
-     * @return The (unqualified) filename of the POM for the wkhtmltopdf invocation or <code>null</code> if not set.
+     * @return The (unqualified) filename of the POM for the Calibre invocation or <code>null</code> if not set.
      */
     String getPomFileName();
 
     /**
-     * Gets the path to the base directory of the POM for the wkhtmltopdf invocation. If {@link #getPomFile()} does not return
-     * <code>null</code>, this setting only affects the working directory for the wkhtmltopdf invocation.
+     * Gets the path to the base directory of the POM for the Calibre invocation. If {@link #getPomFile()} does not return
+     * <code>null</code>, this setting only affects the working directory for the Calibre invocation.
      * 
      * @return The path to the base directory of the POM or <code>null</code> if not set.
      */
     File getBaseDirectory();
 
     /**
-     * Gets the path to the base directory of the POM for the wkhtmltopdf invocation. If {@link #getPomFile()} does not return
-     * <code>null</code>, this setting only affects the working directory for the wkhtmltopdf invocation.
+     * Gets the path to the base directory of the POM for the Calibre invocation. If {@link #getPomFile()} does not return
+     * <code>null</code>, this setting only affects the working directory for the Calibre invocation.
      * 
      * @param defaultDirectory The default base directory to use if none is configured for this request, may be
      *            <code>null</code>.
@@ -202,39 +202,39 @@ public interface InvocationRequest
     File getBaseDirectory( File defaultDirectory );
 
     /**
-     * Gets the path to the base directory of the Java installation used to run wkhtmltopdf.
+     * Gets the path to the base directory of the Java installation used to run Calibre.
      * 
-     * @return The path to the base directory of the Java installation used to run wkhtmltopdf or <code>null</code> to use the
+     * @return The path to the base directory of the Java installation used to run Calibre or <code>null</code> to use the
      *         default Java home.
      */
     File getJavaHome();
 
     /**
-     * Gets the system properties for the wkhtmltopdf invocation.
+     * Gets the system properties for the Calibre invocation.
      * 
-     * @return The system properties for the wkhtmltopdf invocation or <code>null</code> if not set.
+     * @return The system properties for the Calibre invocation or <code>null</code> if not set.
      */
     Properties getProperties();
 
     /**
-     * Gets the goals for the wkhtmltopdf invocation.
+     * Gets the goals for the Calibre invocation.
      * 
-     * @return The goals for the wkhtmltopdf invocation or <code>null</code> if not set.
+     * @return The goals for the Calibre invocation or <code>null</code> if not set.
      */
     List<String> getGoals();
 
     /**
-     * Gets the path to the user settings for the wkhtmltopdf invocation.
+     * Gets the path to the user settings for the Calibre invocation.
      * 
-     * @return The path to the user settings for the wkhtmltopdf invocation or <code>null</code> to load the user settings
+     * @return The path to the user settings for the Calibre invocation or <code>null</code> to load the user settings
      *         from the default location.
      */
     File getUserSettingsFile();
 
     /**
-     * Gets the path to the global settings for the wkhtmltopdf invocation.
+     * Gets the path to the global settings for the Calibre invocation.
      * 
-     * @return The path to the global settings for the wkhtmltopdf invocation or <code>null</code> to load the global settings
+     * @return The path to the global settings for the Calibre invocation or <code>null</code> to load the global settings
      *         from the default location.
      * @since 2.1
      */
@@ -250,7 +250,7 @@ public interface InvocationRequest
     File getToolchainsFile();
 
     /**
-     * Alternate path for the global toolchains file <b>Note. This is available since wkhtmltopdf 3.3.1</b>
+     * Alternate path for the global toolchains file <b>Note. This is available since Calibre 3.3.1</b>
      * 
      * @return The path to the custom global toolchains file or <code>null</code> to load the global toolchains from the
      *         default location.
@@ -259,7 +259,7 @@ public interface InvocationRequest
     File getGlobalToolchainsFile();
 
     /**
-     * Gets the checksum mode of the wkhtmltopdf invocation.
+     * Gets the checksum mode of the Calibre invocation.
      * 
      * @return The checksum mode, one of {@link CheckSumPolicy#Warn} and {@link CheckSumPolicy#Fail}.
      * @since 3.0.0
@@ -267,16 +267,16 @@ public interface InvocationRequest
     CheckSumPolicy getGlobalChecksumPolicy();
 
     /**
-     * Gets the profiles for the wkhtmltopdf invocation.
+     * Gets the profiles for the Calibre invocation.
      * 
-     * @return The profiles for the wkhtmltopdf invocation or <code>null</code> if not set.
+     * @return The profiles for the Calibre invocation or <code>null</code> if not set.
      */
     List<String> getProfiles();
 
     /**
-     * Gets the environment variables for the wkhtmltopdf invocation.
+     * Gets the environment variables for the Calibre invocation.
      * 
-     * @return The environment variables for the wkhtmltopdf invocation or <code>null</code> if not set.
+     * @return The environment variables for the Calibre invocation or <code>null</code> if not set.
      */
     Map<String, String> getShellEnvironments();
 
@@ -308,7 +308,7 @@ public interface InvocationRequest
     // ----------------------------------------------------------------------
 
     /**
-     * The reactor failure behavior which to be used during wkhtmltopdf invocation.
+     * The reactor failure behavior which to be used during Calibre invocation.
      */
     public enum ReactorFailureBehavior
     {
@@ -371,7 +371,7 @@ public interface InvocationRequest
     // ----------------------------------------------------------------------
 
     /**
-     * The kind of checksum policy which should be used during wkhtmltopdf invocation.
+     * The kind of checksum policy which should be used during Calibre invocation.
      */
     enum CheckSumPolicy
     {
@@ -392,9 +392,9 @@ public interface InvocationRequest
     // ----------------------------------------------------------------------
 
     /**
-     * Sets the interaction mode of the wkhtmltopdf invocation. Equivalent of {@code -B} and {@code --batch-mode}
+     * Sets the interaction mode of the Calibre invocation. Equivalent of {@code -B} and {@code --batch-mode}
      * 
-     * @param batchMode <code>true</code> if wkhtmltopdf should be executed in non-interactive mode, <code>false</code> if the
+     * @param batchMode <code>true</code> if Calibre should be executed in non-interactive mode, <code>false</code> if the
      *            interactive modes is used.
      * @return This invocation request.
      * @since 3.0.0
@@ -402,33 +402,33 @@ public interface InvocationRequest
     InvocationRequest setBatchMode( boolean batchMode );
 
     /**
-     * Sets the network mode of the wkhtmltopdf invocation. Equivalent of {@code -o} and {@code --offline}
+     * Sets the network mode of the Calibre invocation. Equivalent of {@code -o} and {@code --offline}
      * 
-     * @param offline <code>true</code> if wkhtmltopdf should be executed in offline mode, <code>false</code> if the online
+     * @param offline <code>true</code> if Calibre should be executed in offline mode, <code>false</code> if the online
      *            mode is used.
      * @return This invocation request.
      */
     InvocationRequest setOffline( boolean offline );
 
     /**
-     * Sets the debug mode of the wkhtmltopdf invocation. Equivalent of {@code -X} and {@code --debug}
+     * Sets the debug mode of the Calibre invocation. Equivalent of {@code -X} and {@code --debug}
      * 
-     * @param debug <code>true</code> if wkhtmltopdf should be executed in debug mode, <code>false</code> if the normal mode
+     * @param debug <code>true</code> if Calibre should be executed in debug mode, <code>false</code> if the normal mode
      *            should be used.
      * @return This invocation request.
      */
     InvocationRequest setDebug( boolean debug );
 
     /**
-     * Sets the exception output mode of the wkhtmltopdf invocation. Equivalent of {@code -e} and {@code --errors}
+     * Sets the exception output mode of the Calibre invocation. Equivalent of {@code -e} and {@code --errors}
      * 
-     * @param showErrors <code>true</code> if wkhtmltopdf should print stack traces, <code>false</code> otherwise.
+     * @param showErrors <code>true</code> if Calibre should print stack traces, <code>false</code> otherwise.
      * @return This invocation request.
      */
     InvocationRequest setShowErrors( boolean showErrors );
 
     /**
-     * Specifies whether wkhtmltopdf should enforce an update check for plugins and snapshots. Equivalent of {@code -U} and
+     * Specifies whether Calibre should enforce an update check for plugins and snapshots. Equivalent of {@code -U} and
      * {@code --update-snapshots}
      * 
      * @param updateSnapshots <code>true</code> if plugins and snapshots should be updated, <code>false</code>
@@ -438,7 +438,7 @@ public interface InvocationRequest
     InvocationRequest setUpdateSnapshots( boolean updateSnapshots );
 
     /**
-     * Sets the failure mode of the wkhtmltopdf invocation. Equivalent of {@code -ff} and {@code --fail-fast}, {@code -fae}
+     * Sets the failure mode of the Calibre invocation. Equivalent of {@code -ff} and {@code --fail-fast}, {@code -fae}
      * and {@code --fail-at-end}, {@code -fn} and {@code --fail-never}
      * 
      * @param failureBehavior The failure mode, must be one of {@link ReactorFailureBehavior#FailFast},
@@ -449,7 +449,7 @@ public interface InvocationRequest
     InvocationRequest setReactorFailureBehavior( ReactorFailureBehavior failureBehavior );
 
     /**
-     * Sets the path to the base directory of the local repository to use for the wkhtmltopdf invocation.
+     * Sets the path to the base directory of the local repository to use for the Calibre invocation.
      * 
      * @param localRepository The path to the base directory of the local repository, may be <code>null</code>.
      * @return This invocation request.
@@ -457,17 +457,17 @@ public interface InvocationRequest
     InvocationRequest setLocalRepositoryDirectory( File localRepository );
 
     /**
-     * Sets the input stream used to provide input for the invoked wkhtmltopdf build. This is in particular useful when
-     * invoking wkhtmltopdf in interactive mode.
+     * Sets the input stream used to provide input for the invoked Calibre build. This is in particular useful when
+     * invoking Calibre in interactive mode.
      * 
-     * @param inputStream The input stream used to provide input for the invoked wkhtmltopdf build, may be <code>null</code>
+     * @param inputStream The input stream used to provide input for the invoked Calibre build, may be <code>null</code>
      *            if not required.
      * @return This invocation request.
      */
     InvocationRequest setInputStream( InputStream inputStream );
 
     /**
-     * Sets the handler used to capture the standard output from the wkhtmltopdf build.
+     * Sets the handler used to capture the standard output from the Calibre build.
      * 
      * @param outputHandler The output handler, may be <code>null</code> if the output is not of interest.
      * @return This invocation request.
@@ -475,7 +475,7 @@ public interface InvocationRequest
     InvocationRequest setOutputHandler( InvocationOutputHandler outputHandler );
 
     /**
-     * Sets the handler used to capture the error output from the wkhtmltopdf build.
+     * Sets the handler used to capture the error output from the Calibre build.
      * 
      * @param errorHandler The error handler, may be <code>null</code> if the output is not of interest.
      * @return This invocation request.
@@ -483,28 +483,28 @@ public interface InvocationRequest
     InvocationRequest setErrorHandler( InvocationOutputHandler errorHandler );
 
     /**
-     * Sets the path to the POM for the wkhtmltopdf invocation. If no base directory is set, the parent directory of this POM
-     * will be used as the working directory for the wkhtmltopdf invocation.
+     * Sets the path to the POM for the Calibre invocation. If no base directory is set, the parent directory of this POM
+     * will be used as the working directory for the Calibre invocation.
      * 
-     * @param pomFile The path to the POM for the wkhtmltopdf invocation, may be <code>null</code> if not used.
+     * @param pomFile The path to the POM for the Calibre invocation, may be <code>null</code> if not used.
      * @return This invocation request.
      */
     InvocationRequest setPomFile( File pomFile );
 
     /**
-     * Sets the (unqualified) filename of the POM for the wkhtmltopdf invocation. This setting is ignored if
+     * Sets the (unqualified) filename of the POM for the Calibre invocation. This setting is ignored if
      * {@link #getPomFile()} does not return <code>null</code>. Otherwise, the base directory is assumed to contain a
      * POM with this name.
      * 
-     * @param pomFilename The (unqualified) filename of the POM for the wkhtmltopdf invocation, may be <code>null</code> if
+     * @param pomFilename The (unqualified) filename of the POM for the Calibre invocation, may be <code>null</code> if
      *            not used.
      * @return This invocation request.
      */
     InvocationRequest setPomFileName( String pomFilename );
 
     /**
-     * Sets the path to the base directory of the POM for the wkhtmltopdf invocation. If {@link #getPomFile()} does not return
-     * <code>null</code>, this setting only affects the working directory for the wkhtmltopdf invocation.
+     * Sets the path to the base directory of the POM for the Calibre invocation. If {@link #getPomFile()} does not return
+     * <code>null</code>, this setting only affects the working directory for the Calibre invocation.
      * 
      * @param basedir The path to the base directory of the POM, may be <code>null</code> if not used.
      * @return This invocation request.
@@ -512,40 +512,40 @@ public interface InvocationRequest
     InvocationRequest setBaseDirectory( File basedir );
 
     /**
-     * Sets the path to the base directory of the Java installation used to run wkhtmltopdf.
+     * Sets the path to the base directory of the Java installation used to run Calibre.
      * 
-     * @param javaHome The path to the base directory of the Java installation used to run wkhtmltopdf, may be
+     * @param javaHome The path to the base directory of the Java installation used to run Calibre, may be
      *            <code>null</code> to use the default Java home.
      * @return This invocation request.
      */
     InvocationRequest setJavaHome( File javaHome );
 
     /**
-     * Sets the system properties for the wkhtmltopdf invocation.
+     * Sets the system properties for the Calibre invocation.
      * 
-     * @param properties The system properties for the wkhtmltopdf invocation, may be <code>null</code> if not set.
+     * @param properties The system properties for the Calibre invocation, may be <code>null</code> if not set.
      * @return This invocation request.
      */
     InvocationRequest setProperties( Properties properties );
 
     /**
-     * Sets the goals for the wkhtmltopdf invocation.
+     * Sets the goals for the Calibre invocation.
      * 
-     * @param goals The goals for the wkhtmltopdf invocation, may be <code>null</code> to execute the POMs default goal.
+     * @param goals The goals for the Calibre invocation, may be <code>null</code> to execute the POMs default goal.
      * @return This invocation request.
      */
     InvocationRequest setGoals( List<String> goals );
 
     /**
-     * Sets the profiles for the wkhtmltopdf invocation. Equivalent of {@code -P} and {@code --active-profiles}
+     * Sets the profiles for the Calibre invocation. Equivalent of {@code -P} and {@code --active-profiles}
      * 
-     * @param profiles The profiles for the wkhtmltopdf invocation, may be <code>null</code> to use the default profiles.
+     * @param profiles The profiles for the Calibre invocation, may be <code>null</code> to use the default profiles.
      * @return This invocation request.
      */
     InvocationRequest setProfiles( List<String> profiles );
 
     /**
-     * Specifies whether the environment variables of the current process should be propagated to the wkhtmltopdf invocation.
+     * Specifies whether the environment variables of the current process should be propagated to the Calibre invocation.
      * 
      * @param shellEnvironmentInherited <code>true</code> if the environment variables should be propagated,
      *            <code>false</code> otherwise.
@@ -554,19 +554,19 @@ public interface InvocationRequest
     InvocationRequest setShellEnvironmentInherited( boolean shellEnvironmentInherited );
 
     /**
-     * Sets the path to the user settings for the wkhtmltopdf invocation. Equivalent of {@code -s} and {@code --settings}
+     * Sets the path to the user settings for the Calibre invocation. Equivalent of {@code -s} and {@code --settings}
      * 
-     * @param userSettings The path to the user settings for the wkhtmltopdf invocation, may be <code>null</code> to load the
+     * @param userSettings The path to the user settings for the Calibre invocation, may be <code>null</code> to load the
      *            user settings from the default location.
      * @return This invocation request.
      */
     InvocationRequest setUserSettingsFile( File userSettings );
 
     /**
-     * Sets the path to the global settings for the wkhtmltopdf invocation. Equivalent of {@code -gs} and
+     * Sets the path to the global settings for the Calibre invocation. Equivalent of {@code -gs} and
      * {@code --global-settings}
      * 
-     * @param globalSettings The path to the global settings for the wkhtmltopdf invocation, may be <code>null</code> to load
+     * @param globalSettings The path to the global settings for the Calibre invocation, may be <code>null</code> to load
      *            the global settings from the default location.
      * @return This invocation request.
      * @since 2.1
@@ -592,7 +592,7 @@ public interface InvocationRequest
     InvocationRequest setGlobalToolchainsFile( File toolchains );
 
     /**
-     * Sets the checksum mode of the wkhtmltopdf invocation. Equivalent of {@code -c} or {@code --lax-checksums}, {@code -C}
+     * Sets the checksum mode of the Calibre invocation. Equivalent of {@code -c} or {@code --lax-checksums}, {@code -C}
      * or {@code --strict-checksums}
      * 
      * @param globalChecksumPolicy The checksum mode, must be one of {@link CheckSumPolicy#Warn} and
@@ -603,7 +603,7 @@ public interface InvocationRequest
     InvocationRequest setGlobalChecksumPolicy( CheckSumPolicy globalChecksumPolicy );
 
     /**
-     * Specifies whether wkhtmltopdf should check for plugin updates.
+     * Specifies whether Calibre should check for plugin updates.
      * <p>
      * Equivalent of {@code -npu} or {@code --no-plugin-updates}<br/>
      * <strong>note: </strong>Ineffective with Maven3, only kept for backward compatibility
@@ -624,7 +624,7 @@ public interface InvocationRequest
     InvocationRequest setRecursive( boolean recursive );
 
     /**
-     * Adds the specified environment variable to the wkhtmltopdf invocation.
+     * Adds the specified environment variable to the Calibre invocation.
      * 
      * @param name The name of the environment variable, must not be <code>null</code>.
      * @param value The value of the environment variable, must not be <code>null</code>.
@@ -699,7 +699,7 @@ public interface InvocationRequest
     InvocationRequest setResumeFrom( String resumeFrom );
 
     /**
-     * The id of the build strategy to use. equivalent of {@code --builder id}. <b>Note. This is available since wkhtmltopdf
+     * The id of the build strategy to use. equivalent of {@code --builder id}. <b>Note. This is available since Calibre
      * 3.2.1</b>
      * 
      * @param id The builder id.
@@ -710,7 +710,7 @@ public interface InvocationRequest
 
     /**
      * Get the current set builder strategy id equivalent of {@code --builder id}. <b>Note. This is available since
-     * wkhtmltopdf 3.2.1</b>
+     * Calibre 3.2.1</b>
      * 
      * @return The current set builder id.
      * @since 3.0.0

@@ -9,11 +9,11 @@ public class HtmlToPdf {
 
     private static final Logger LOG = LoggerFactory.getLogger(HtmlToPdf.class);
 
-    private static final String TOPDFTOOL = "/root/wkhtmltox/bin/wkhtmltopdf";
+    private static final String TOPDFTOOL = "/root/wkhtmltox/bin/Calibre";
 
     /**
      * wkhtmltox = 环境变量
-     * C:\Program Files\wkhtmltopdf\bin
+     * C:\Program Files\Calibre\bin
      * 
      * 
      * html转pdf

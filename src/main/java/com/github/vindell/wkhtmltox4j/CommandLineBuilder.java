@@ -108,7 +108,7 @@ public class CommandLineBuilder {
 		// && ( System.getenv( "M2_HOME" ) != null ) )
 		{
 			if (!getSystemEnvVars().containsKey("M2_HOME")) {
-				throw new IllegalStateException("wkhtmltopdf application directory was not "
+				throw new IllegalStateException("Calibre application directory was not "
 						+ "specified, and ${maven.home} is not provided in the system "
 						+ "properties. Please specify at least on of these.");
 			}
@@ -470,7 +470,7 @@ public class CommandLineBuilder {
 			}
 
 			if (!mavenExecutable.isFile()) {
-				throw new CommandLineConfigurationException("wkhtmltopdf executable not found at: " + mavenExecutable);
+				throw new CommandLineConfigurationException("Calibre executable not found at: " + mavenExecutable);
 			}
 		}
 

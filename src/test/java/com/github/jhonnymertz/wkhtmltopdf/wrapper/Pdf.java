@@ -1,10 +1,10 @@
-package com.github.jhonnymertz.wkhtmltopdf.wrapper;
+package com.github.jhonnymertz.Calibre.wrapper;
 
-import com.github.jhonnymertz.wkhtmltopdf.wrapper.configurations.WrapperConfig;
-import com.github.jhonnymertz.wkhtmltopdf.wrapper.page.Page;
-import com.github.jhonnymertz.wkhtmltopdf.wrapper.page.PageType;
-import com.github.jhonnymertz.wkhtmltopdf.wrapper.params.Param;
-import com.github.jhonnymertz.wkhtmltopdf.wrapper.params.Params;
+import com.github.jhonnymertz.Calibre.wrapper.configurations.WrapperConfig;
+import com.github.jhonnymertz.Calibre.wrapper.page.Page;
+import com.github.jhonnymertz.Calibre.wrapper.page.PageType;
+import com.github.jhonnymertz.Calibre.wrapper.params.Param;
+import com.github.jhonnymertz.Calibre.wrapper.params.Params;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -111,7 +111,7 @@ public class Pdf {
         if (wrapperConfig.isXvfbEnabled()){
             commandLine.addAll(wrapperConfig.getXvfbConfig().getCommandLine());
         } else {
-        	commandLine.add(wrapperConfig.getWkhtmltopdfCommand());
+        	commandLine.add(wrapperConfig.getCalibreCommand());
         }
         commandLine.addAll(params.getParamsAsStringList());
 
@@ -121,7 +121,7 @@ public class Pdf {
         for (Page page : pages) {
             if (page.getType().equals(PageType.htmlAsString)) {
 
-                File temp = File.createTempFile("java-wkhtmltopdf-wrapper" + UUID.randomUUID().toString(), ".html");
+                File temp = File.createTempFile("java-Calibre-wrapper" + UUID.randomUUID().toString(), ".html");
                 FileUtils.writeStringToFile(temp, page.getSource(), "UTF-8");
 
                 page.setSource(temp.getAbsolutePath());

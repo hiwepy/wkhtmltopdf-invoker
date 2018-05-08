@@ -18,7 +18,7 @@ package com.github.vindell.wkhtmltox4j;
 import org.codehaus.plexus.util.cli.StreamConsumer;
 
 /**
- * Receives the standard/error output from a wkhtmltopdf invocation.
+ * Receives the standard/error output from a Calibre invocation.
  */
 public interface InvocationOutputHandler extends StreamConsumer {
 	// empty by design

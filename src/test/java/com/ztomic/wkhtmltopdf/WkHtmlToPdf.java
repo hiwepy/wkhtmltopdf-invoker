@@ -1,4 +1,4 @@
-package com.ztomic.wkhtmltopdf;
+package com.ztomic.Calibre;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -14,12 +14,12 @@ import org.apache.commons.io.IOUtils;
 import com.github.vindell.wkhtmltox4j.source.InputStreamSource;
 import com.github.vindell.wkhtmltox4j.source.Source;
 import com.github.vindell.wkhtmltox4j.source.UrlSource;
-import com.ztomic.wkhtmltopdf.argument.Argument;
-import com.ztomic.wkhtmltopdf.argument.Option;
+import com.ztomic.Calibre.argument.Argument;
+import com.ztomic.Calibre.argument.Option;
 
-public class WkHtmlToPdf {
+public class Calibre {
 
-	public static final String DEFAULT_EXECUTABLE = "wkhtmltopdf";
+	public static final String DEFAULT_EXECUTABLE = "Calibre";
 
 	private String executable;
 	private List<Argument> arguments = new LinkedList<Argument>();
@@ -27,12 +27,12 @@ public class WkHtmlToPdf {
 	private List<Source<?>> sources = new LinkedList<Source<?>>();
 	private boolean toc = false;
 	
-	public WkHtmlToPdf(String executable) {
+	public Calibre(String executable) {
 		this.executable = executable;
 		addEnvironmentVariables("COLUMNS=300 < /dev/null");
 	}
 
-	public WkHtmlToPdf() {
+	public Calibre() {
 		this(DEFAULT_EXECUTABLE);
 	}
 

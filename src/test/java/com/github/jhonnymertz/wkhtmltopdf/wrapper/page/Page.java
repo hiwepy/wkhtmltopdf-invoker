@@ -1,4 +1,4 @@
-package com.github.jhonnymertz.wkhtmltopdf.wrapper.page;
+package com.github.jhonnymertz.Calibre.wrapper.page;
 
 public class Page {
 

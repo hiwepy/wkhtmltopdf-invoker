@@ -1,7 +1,7 @@
-package com.github.jhonnymertz.wkhtmltopdf.wrapper.configurations;
+package com.github.jhonnymertz.Calibre.wrapper.configurations;
 
-import com.github.jhonnymertz.wkhtmltopdf.wrapper.params.Param;
-import com.github.jhonnymertz.wkhtmltopdf.wrapper.params.Params;
+import com.github.jhonnymertz.Calibre.wrapper.params.Param;
+import com.github.jhonnymertz.Calibre.wrapper.params.Params;
 
 import java.util.ArrayList;
 import java.util.List;
