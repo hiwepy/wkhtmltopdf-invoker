@@ -30,8 +30,8 @@ public interface InvocationRequest {
 
 	/**
 	 * Indicates whether the environment variables of the current process should be
-	 * propagated to the Maven invocation. By default, the current environment
-	 * variables are inherited by the new Maven invocation.
+	 * propagated to the wkhtmltopdf invocation. By default, the current environment
+	 * variables are inherited by the new wkhtmltopdf invocation.
 	 * 
 	 * @return <code>true</code> if the environment variables should be propagated,
 	 *         <code>false</code> otherwise.
@@ -81,7 +81,38 @@ public interface InvocationRequest {
 	 * @return The environment variables for the wkhtmltopdf invocation or <code>null</code> if not set.
 	 */
 	Map<String, String> getShellEnvironments();
+	
+	/**
+	 * Indicates whether Collate when printing multiple copies, Default true
+	 */
+	boolean isCollate();
+	
+	/**
+	 * Read and write cookies from and to the supplied cookie jar file;
+	 */
+	File getCookieJar();
+	
+	/**
+	 * Number of copies to print into the pdf file (default 1)
+	 */
+	int getCopies();
+	
+	/**
+	 * Get the dpi explicitly (this has no effect on X11 based systems) (default 96)
+	 */
+	int getDpi();
+	
+	/**
+	 * Indicates whether PDF will be generated in grayscale
+	 */
+	boolean isGrayscale();
 
+	/**
+	 * When embedding images scale them down to this dpi (default 600)
+	 */
+	int getImageDpi();
+	
+	
 	// ----------------------------------------------------------------------
 	//
 	// ----------------------------------------------------------------------
@@ -143,6 +174,48 @@ public interface InvocationRequest {
 	 * @return This invocation request.
 	 */
 	InvocationRequest addShellEnvironment(String name, String value);
+	
+	
+	/**
+	 * Set the value of the {@code collate}; {@code true} if the
+	 * argument {@code --collate} was specified, otherwise
+	 * {@code false} the argument {@code --no-collate} was specified
+	 */
+	InvocationRequest setCollate(boolean collate);
+	
+	/**
+	 * Read and write cookies from and to the supplied cookie jar file;
+	 * Set the value of the {@code cookie-jar}; {@code true} if the
+	 * argument {@code --cookie-jar} was specified, otherwise {@code false} 
+	 */
+	InvocationRequest setCookieJar(File cookieJar);
+	
+	/**
+	 * Number of copies to print into the pdf file (default 1)
+	 * @param copies 
+	 * @return
+	 */
+	InvocationRequest setCopies(int copies);
+	
+	/**
+	 * Change the dpi explicitly (this has no effect on X11 based systems) (default 96)
+	 * @param dpi
+	 * @return
+	 */
+	InvocationRequest setDpi(int dpi);
+	
+	/**
+	 * Set the value of the {@code grayscale}; {@code true} if the
+	 * argument {@code --grayscale} was specified, otherwise {@code false}  
+	 */
+	InvocationRequest setGrayscale(boolean grayscale);
+	
+	/**
+	 * Set the value of the {@code image-dpi}; {@code true} if the
+	 * argument {@code --image-dpi} was specified, otherwise {@code false}  
+	 */
+	InvocationRequest setImageDpi(int dpi);
+	
 	
 	InvocationRequest setOutputFile(File outputFile);
 

@@ -18,7 +18,6 @@ package com.github.vindell.wkhtmltopdf.invoker.request;
 import java.io.File;
 
 /**
- * https://manual.calibre-ebook.com/generated/en/web2disk.html
  * @author ： <a href="https://github.com/vindell">vindell</a>
  */
 public class DefaultWkhtmlToPdfInvocationRequest extends AbstractInvocationRequest implements WkhtmlToPdfInvocationRequest {

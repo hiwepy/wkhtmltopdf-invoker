@@ -18,8 +18,6 @@ package com.github.vindell.wkhtmltopdf.invoker.request;
 import java.io.File;
 
 /**
- * https://manual.calibre-ebook.com/generated/en/lrs2lrf.html
- * 
  * @author ： <a href="https://github.com/vindell">vindell</a>
  */
 public class DefaultWkhtmlToImageInvocationRequest extends AbstractInvocationRequest implements WkhtmlToImageInvocationRequest {

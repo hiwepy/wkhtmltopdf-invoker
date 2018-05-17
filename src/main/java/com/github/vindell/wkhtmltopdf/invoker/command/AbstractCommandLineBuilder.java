@@ -147,21 +147,21 @@ public abstract class AbstractCommandLineBuilder {
 	}
 
 	protected File findWkhtmltopdfHome() throws CommandLineConfigurationException, IOException {
-		if (calibreHome == null) {
-			String calibreHomeProperty = System.getProperty("calibre.home");
+		if (wkhtmltopdfHome == null) {
+			String calibreHomeProperty = System.getProperty("wkhtmltopdf.home");
 			if (calibreHomeProperty != null) {
-				calibreHome = new File(calibreHomeProperty);
-				if (!calibreHome.isDirectory()) {
+				wkhtmltopdfHome = new File(calibreHomeProperty);
+				if (!wkhtmltopdfHome.isDirectory()) {
 					throw new IllegalStateException(
-							"${calibre.home} is not specified as a directory: \'" + calibreHomeProperty + "\'.");
+							"${wkhtmltopdf.home} is not specified as a directory: \'" + calibreHomeProperty + "\'.");
 				}
 			}
 			
-			if ((calibreHome == null) && (getSystemEnvVars().getProperty("CALIBRE_HOME") != null)) {
-				calibreHome = new File(getSystemEnvVars().getProperty("CALIBRE_HOME"));
+			if ((wkhtmltopdfHome == null) && (getSystemEnvVars().getProperty("WKHTMLTOPDF_HOME") != null)) {
+				wkhtmltopdfHome = new File(getSystemEnvVars().getProperty("WKHTMLTOPDF_HOME"));
 			}
 		}
-		return calibreHome;
+		return wkhtmltopdfHome;
 	}
 	 
 	protected void setVerbose(InvocationRequest request, Commandline cli) {

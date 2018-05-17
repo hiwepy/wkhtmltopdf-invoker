@@ -25,11 +25,11 @@ import java.util.Properties;
 import com.github.vindell.wkhtmltopdf.invoker.InvocationOutputHandler;
 
 /**
- * Specifies the parameters used to control a Calibre invocation.
+ * Specifies the parameters used to control a wkhtmltopdf invocation.
  */
 public abstract class AbstractInvocationRequest implements InvocationRequest {
 
-	public static final String DEFAULT_EXECUTABLE = "calibre";
+	public static final String DEFAULT_EXECUTABLE = "wkhtmltopdf";
 
 	/**
 	 * Indicates whether Collate when printing multiple copies
@@ -46,7 +46,7 @@ public abstract class AbstractInvocationRequest implements InvocationRequest {
 
 	private boolean shellEnvironmentInherited = true;
 
-	private File calibreHome;
+	private File wkhtmltopdfHome;
 
 	private Map<String, String> shellEnvironments;
 	/**
@@ -112,15 +112,15 @@ public abstract class AbstractInvocationRequest implements InvocationRequest {
 		return this;
 	}
 
-	public File getCalibreHome() {
-		return calibreHome;
+	public File getWkhtmltopdfHome() {
+		return wkhtmltopdfHome;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public InvocationRequest setCalibreHome(File calibreHome) {
-		this.calibreHome = calibreHome;
+	public InvocationRequest setWkhtmltopdfHome(File wkhtmltopdfHome) {
+		this.wkhtmltopdfHome = wkhtmltopdfHome;
 		return this;
 	}
 

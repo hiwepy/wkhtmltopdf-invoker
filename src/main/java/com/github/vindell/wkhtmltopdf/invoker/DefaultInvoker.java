@@ -73,7 +73,7 @@ public class DefaultInvoker implements Invoker {
  
 		File wkhtmltopdfHome = getWkhtmltopdfHome();
 		if (wkhtmltopdfHome != null) {
-			cliBuilder.setCalibreHome(getWkhtmltopdfHome());
+			cliBuilder.setWkhtmltopdfHome(getWkhtmltopdfHome());
 		}
 		
 		File workingDirectory = getWorkingDirectory();
