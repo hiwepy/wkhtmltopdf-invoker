@@ -44,12 +44,11 @@
             <properties>
                 <!-- Dependency versions -->
                 <additionalparam>-Xdoclint:none</additionalparam>
-                <central-maven-publishing-plugin.version>0.11.0</central-maven-publishing-plugin.version>
+                <maven-central-publishing-plugin.version>0.11.0</maven-central-publishing-plugin.version>
                 <jsoup.version>1.22.2</jsoup.version>
                 <lombok.version>1.18.46</lombok.version>
                 <maven.test.skip>true</maven.test.skip>
                 <!-- Maven Plugin versions -->
-                <maven-central-publishing-plugin.version>0.11.0</maven-central-publishing-plugin.version>
                 <maven-jacoco-plugin.version>0.8.15</maven-jacoco-plugin.version>
             </properties>
         </profile>
@@ -83,7 +82,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <slf4j.version>2.0.18</slf4j.version>
         <!-- Maven Plugin versions -->
-        <maven-central-publishing-plugin.version>0.11.0</maven-central-publishing-plugin.version>
         <maven-clean-plugin.version>3.5.0</maven-clean-plugin.version>
         <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
         <maven-dependency-plugin.version>3.8.1</maven-dependency-plugin.version>
